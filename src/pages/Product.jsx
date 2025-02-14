@@ -52,6 +52,13 @@ const Products = () => {
       <div className='border-b pb-4 flex items-center justify-between'>
         <h3 className='text-2xl font-semibold'>Products</h3>
 
+        <input
+            type='text'
+            placeholder='Search Products...'
+    
+            className='border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition'
+          />
+
         <select onChange={(e) => filterprice(Number(e.target.value))}
           className="border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           name="filter"
