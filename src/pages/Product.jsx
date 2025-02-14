@@ -6,19 +6,28 @@ import { useNavigate } from 'react-router-dom';
 const Products = () => {
   const [product, setProduct] = useState([]);
   const [filteredProduct, setFilteredProduct] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   
   
   const filterprice = (price) => { 
-  
+
   const filtered =filteredProduct.filter((p) => p.price > price);
   setProduct(filtered);
   return filtered
-
-
-  
   }
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setProduct(filteredProduct);
+
+    const filtered = filteredProduct.filter((p) => 
+      p.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setProduct(filtered);
+  }
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -55,7 +64,8 @@ const Products = () => {
         <input
             type='text'
             placeholder='Search Products...'
-    
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
             className='border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition'
           />
 
