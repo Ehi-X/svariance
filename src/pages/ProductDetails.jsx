@@ -1,6 +1,8 @@
 import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addtoCart } from "../redux/slices/Cartslices";
 
 
 const ProductDetails = () => {
@@ -8,6 +10,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const dispatch = useDispatch();
 
     const FLUTTER_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY
     
@@ -78,10 +81,12 @@ const ProductDetails = () => {
                 <p className="text-gray-600 leading-relaxed"><strong>Description:</strong> {product.description}</p>
                 <p className="text-xl font-semibold text-green-600"><strong>Price:</strong> ${product.price}</p>
 
+                <div className="flex gap-20 mt-20">
                 <FlutterWaveButton className="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300" {...fwConfig} />
-                {/* <button className="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+                <button onClick={()=> {dispatch(addtoCart(product))}} className="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
                     Add to Cart
-                </button> */}
+                </button>
+                </div>
             </div>
         </div>
     );

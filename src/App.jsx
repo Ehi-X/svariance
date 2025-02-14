@@ -7,6 +7,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Settings from "./pages/Settings";
 import Billings from "./pages/Billings";
 import Homep from "./pages/Homep";
+import Checkout from "./components/Checkout";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="product/:id" element={<ProductDetails />} />
           <Route path ="settings" element = {<Settings/>}/>
           <Route path ="billing" element = {<Billings/>}/>
+          <Route path ="checkout" element = {<Checkout/>}/>
           
         </Route>
       </Routes>
