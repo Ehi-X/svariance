@@ -2,7 +2,7 @@ import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addtoCart } from "../redux/slices/Cartslices";
+import { addtoCart } from "../redux/slices/cartslice";
 
 
 const ProductDetails = () => {
